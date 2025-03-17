@@ -1,0 +1,23 @@
+h3 {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+
+}
+
+form {
+    margin-left: 580px;
+    border-radius: 20px;
+    background-color: gray;
+    height: 400px;
+    display: grid;
+    align-items: center;
+    width: 400px;
+   
+}
+input {
+    height: 30px;
+    width: 393px;
+    border-radius: 10px;
+   
+}
