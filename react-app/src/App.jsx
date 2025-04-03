@@ -147,7 +147,7 @@
 //         </div>
 //       );
 //     }
-  
+
 
 //   import { useState, useEffect } from "react";
 
@@ -258,53 +258,171 @@
 //       <h2>Түс таңда:</h2>
 //       <button onClick={() => setColor("red")}>Dark Mode</button>
 //       <button onClick={() => setColor("blue")}>Light Mode</button>
-      
+
 //     </div>
 //   );
 // }
 
 
-import { useState, useEffect } from "react";
-import './style.css'
+// import { useState, useEffect } from "react";
+// import './style.css'
 
-export default function App() {
+// export default function App() {
 
-  const [username, setUsername] = useState(0); 
-  
+//   const [username, setUsername] = useState(0); 
 
-      useEffect(() => {
-        const savedUser = localStorage.getItem("username");
-        if (savedUser) {
-          setUsername(savedUser);
-        }
-      }, []);
-  
-      useEffect(() => {
-        if (username) {
-          localStorage.setItem("username", username);
-        } else {
-          localStorage.removeItem("username");
-        }
-      }, [username]);
-      function Savelogin() {
-        const name = localStorage.getItem('name')
-        const email = localStorage.getItem('email')
-        const password = localStorage.getItem('password')
-        localStorage.setItem('name', name)
-        localStorage.setItem('email', email)
-        localStorage.setItem("password", password)
-      }
-  
-  
-  return (
-    <form>
-    <h3>Name:</h3>
-    <input type="text"  placeholder="name..." onChange={(e) => setUsername(e.target.value)}/>
-    <h3>Email:</h3>
-    <input type="text" placeholder="email..."onChange={(e) => setUsername(e.target.value)}/>
-    <h3>Passwordhoi:</h3>
-    <input type="text" placeholder="password..." onChange={(e) => setUsername(e.target.value)}/>
-    <button onClick={(Savelogin) => setUsername("")}>Регистер</button>
-    </form>
-  )
-}
+
+//       useEffect(() => {
+//         const savedUser = localStorage.getItem("username");
+//         if (savedUser) {
+//           setUsername(savedUser);
+//         }
+//       }, []);
+
+//       useEffect(() => {
+//         if (username) {
+//           localStorage.setItem("username", username);
+//         } else {
+//           localStorage.removeItem("username");
+//         }
+//       }, [username]);
+//       function Savelogin() {
+//         const name = localStorage.getItem('name')
+//         const email = localStorage.getItem('email')
+//         const password = localStorage.getItem('password')
+//         localStorage.setItem('name', name)
+//         localStorage.setItem('email', email)
+//         localStorage.setItem("password", password)
+//       }
+
+
+//   return (
+//     <form>
+//     <h3>Name:</h3>
+//     <input type="text"  placeholder="name..." onChange={(e) => setUsername(e.target.value)}/>
+//     <h3>Email:</h3>
+//     <input type="text" placeholder="email..."onChange={(e) => setUsername(e.target.value)}/>
+//     <h3>Passwordhoi:</h3>
+//     <input type="text" placeholder="password..." onChange={(e) => setUsername(e.target.value)}/>
+//     <button onClick={(Savelogin) => setUsername("")}>Регистер</button>
+//     </form>
+//   )
+// }
+
+
+// import { BrowserRouter, Route, Routes, Link,useNavigate } from "react-router-dom";
+
+// export default function App() {
+
+//   return (
+//     <BrowserRouter>
+//     <Navbar/>-
+//       <Routes>
+//         <Route path="/Home" element={<Home />} />
+//         <Route path="/About" element={<About />} />
+//         <Route path="/Contact" element={<Contact />} />
+//         <Route path="" element={<NotFound />} />
+//         <Route path="/next" element={<NextVideo/>}/>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// function Navbar() {
+//     const navigate = useNavigate();
+//   return (
+//     <nav>
+//       <Link to="/about">about</Link>  {" | "}
+//       <Link to="/contact">contact</Link>  {" | "}
+//       <a href="https://www.ted.com/" target="_blank">a TEd</a>
+//       <h1>Current Video</h1>
+//       <button onClick={() =>navigate("/text-video")}>Youtube</button>
+//     </nav>
+//   );
+// }
+
+// function Home() {
+//   return <h1>Home page</h1>
+// }
+// function NextVideo() {
+//     return <h1>Next Video</h1>
+//   }
+// function NotFound() {
+//   return <h1>404 not found</h1>
+// }
+// function About() {
+//   return <h1>About us</h1>
+// }
+// function Contact() {
+//   return <h1>Contact page</h1>
+// }
+
+// import { useState, useEffect } from "react";
+
+// function App() {
+//   const [theme, setTheme] = useState("white");
+
+//   useEffect(() => {
+//     const asd = localStorage.getItem("theme")
+//     if(asd){
+//         setTheme(asd)
+//     }
+//   }, []);
+
+//   const toggleTheme = () => {
+//     const newTheme = theme ==='white' ? 'black':'white'
+//     setTheme(newTheme)
+//     localStorage.setItem('theme', newTheme)
+
+//   };
+
+//   return (
+//     <nav style={{ backgroundColor: theme, padding: "10px" }}>
+//       <button onClick={toggleTheme}>Түсін өзгерту</button>
+//     </nav>
+//   );
+// }
+
+export default function App(){
+
+  const [games,setWeather] = useState([])
+ 
+  useEffect(() => {
+   axios.get("https://jsonplaceholder.typicode.com/posts")
+   .then((response) =>  {
+     setWeather(response.data.slice(2, 5));
+  } )
+  },[])
+ 
+  return(
+   <div>
+     <ul>
+       {games.map((game)=>(
+         <li>{game.title}</li>
+       ))}
+     </ul>
+   </div>
+  );
+ }
+
+// import { useState } from "react";
+// export default | function Orderform() {
+//   const [name, setName] = useState(""); // Атынды сактайтын корап
+//   const [order, setorder] = useState(""); // Тапсырысты сактайтын корап
+//   return (
+// <div >
+// <h1 > Пиццага тапсырыс бер!</h1 >
+//     cinput
+//   type = "text"
+//   placeholder - "Атынды жаз"
+//   values(name)
+//     onChange = ((e) => setName(e.target.value)) // жазганын корапка
+// <input
+// type = "text"
+// placeholder = "Кандай пицца керек?"
+// value = {order}
+// onChange = ((e) =› setorder(e.target.value)) // Тапсырысты корапка
+// />
+// <button > жіберу</button>
+// </div >
+// }
